@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ashraful Momen - Senior Full Stack / DevOps Engineer</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet" />
+    <style>
+      :root {
+        --primary-color: #00ff88;
+        --secondary-color: #00ffee;
+        --dark-bg: #0b1120;
+        --card-bg: rgba(16, 25, 45, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--dark-bg);
+        color: #fff;
+        min-height: 100vh;
+        position: relative;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Dynamic Background Effect */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 20%,
+            rgba(0, 255, 136, 0.15) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(0, 255, 238, 0.15) 0%,
+            transparent 40%
+          );
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .glass-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        border-radius: 15px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glass-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.05),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .glass-card:hover::before {
+        left: 100%;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
+        border-color: rgba(0, 255, 136, 0.2);
+      }
+
+      .glass-nav {
+        background: rgba(11, 17, 32, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .hero-section {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 255, 136, 0.1),
+          rgba(0, 255, 238, 0.1)
+        );
+        position: relative;
+        overflow: hidden;
+        padding-top: 120px;
+      }
+
+      .hero-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at center,
+          transparent 30%,
+          var(--dark-bg) 100%
+        );
+      }
+
+      .profile-img {
+        border: 4px solid rgba(0, 255, 136, 0.3);
+        padding: 5px;
+        transition: all 0.4s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .profile-img:hover {
+        transform: scale(1.05);
+        border-color: var(--primary-color);
+      }
+
+      .project-card {
+        height: 100%;
+        position: relative;
+      }
+
+      .project-card::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        z-index: -1;
+        border-radius: 16px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-card:hover::after {
+        opacity: 0.3;
+      }
+
+      .project-card .card-body {
+        background: linear-gradient(
+          135deg,
+          rgba(16, 25, 45, 0.95),
+          rgba(16, 25, 45, 0.85)
+        );
+        border-radius: 15px;
+        height: 100%;
+      }
+
+      .social-btn {
+        background: rgba(0, 255, 136, 0.1);
+        border: 1px solid rgba(0, 255, 136, 0.2);
+        color: var(--primary-color) !important;
+        transition: all 0.3s ease;
+      }
+
+      .social-btn:hover {
+        background: rgba(0, 255, 136, 0.2);
+        transform: translateY(-2px);
+        color: white !important;
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0.9;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        background: rgba(16, 25, 45, 0.8);
+        border: 1px solid var(--glass-border);
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        background: rgba(16, 25, 45, 0.9);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+        color: #fff !important;
+      }
+
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6) !important;
+      }
+
+      .btn-submit {
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border: none;
+        color: var(--dark-bg) !important;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        color: var(--dark-bg) !important;
+      }
+
+      .section-title {
+        color: var(--primary-color);
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+      }
+
+      .fade-up {
+        animation: fadeInUp 1s both;
+        opacity: 0;
+      }
+
+      .skill-card {
+        animation: fadeIn 0.5s both;
+        opacity: 0;
+      }
+
+      .skill-card:nth-child(1) { animation-delay: 0.1s; }
+      .skill-card:nth-child(2) { animation-delay: 0.2s; }
+      .skill-card:nth-child(3) { animation-delay: 0.3s; }
+      .skill-card:nth-child(4) { animation-delay: 0.4s; }
+      .skill-card:nth-child(5) { animation-delay: 0.5s; }
+      .skill-card:nth-child(6) { animation-delay: 0.6s; }
+      .skill-card:nth-child(7) { animation-delay: 0.7s; }
+      .skill-card:nth-child(8) { animation-delay: 0.8s; }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark-bg);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(var(--primary-color), var(--secondary-color));
+        border-radius: 5px;
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .experience-card {
+        border-left: 3px solid var(--primary-color);
+      }
+
+      .tech-badge {
+        background: rgba(0, 255, 136, 0.2);
+        color: var(--primary-color);
+        padding: 0.25rem 0.5rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin: 0.1rem;
+      }
+
+      .project-link {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .project-link:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+      }
+
+      .contact-info-card {
+        background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 238, 0.1));
+      }
+
+      /* Section spacing */
+      section {
+        padding: 60px 0;
+      }
+
+      .navbar {
+        z-index: 1030;
+      }
+
+      /* Responsive improvements */
+      @media (max-width: 768px) {
+        .hero-section {
+          padding-top: 80px;
+        }
+        
+        .skill-icon {
+          font-size: 2rem;
+        }
+        
+        section {
+          padding: 40px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#home">
+          <span class="text-info">&lt;</span>
+          Ashraful Momen
+          <span class="text-info">/&gt;</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">Experience</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#education">Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" >
+      <div class="container text-center py-5">
+        <div style="position: relative; z-index: 2;">
+          <h1 class="display-4 fw-bold gradient-text mb-3">Md. Ashraful Momen</h1>
+          <h3 class="mb-3 text-info">Senior Full Stack / DevOps Engineer</h3>
+          <p class="lead mb-4">3+ years experience • Enterprise-scale systems • 40M+ users served</p>
+          
+          <!-- Contact Info -->
+          <div class="row justify-content-center mb-4">
+            <div class="col-lg-8">
+              <div class="glass-card contact-info-card p-3">
+                <div class="row text-start">
+                  <div class="col-md-6">
+                    <p class="mb-2"><i class="fas fa-envelope me-2 text-info"></i> amshuvo64@gmail.com</p>
+                    <p class="mb-2"><i class="fas fa-phone me-2 text-info"></i> +880-1859-385787</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2 text-info"></i> Dhaka, Bangladesh</p>
+                    <p class="mb-2"><i class="fas fa-globe me-2 text-info"></i> Remote-friendly • International opportunities</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center gap-3 mb-4">
+            <a
+              href="https://github.com/Ashraful-Momen"
+              class="btn social-btn text-white"
+              target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/md-ashraful-momen-306771159/"
+              class="btn social-btn text-white"
+              target="_blank">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <h2 class="text-center mb-5 section-title fade-up">Professional Summary</h2>
+          <div class="col-lg-10 mx-auto">
+            <div class="glass-card p-4">
+              <p class="lead mb-4">
+                Full Stack & DevOps Engineer with 3+ years of experience designing and delivering enterprise-scale software, distributed systems, and cloud-native architectures. Led development of insurance & healthcare platforms serving 40M+ subscribers (Robi Ltd) and 100+ hospitals.
+              </p>
+              <p class="mb-4">
+                Expertise in Laravel, Django, React, DevOps (AWS, Docker, K8s, Terraform, CI/CD), database scaling (sharding, replication, failover), and cybersecurity (Kali Linux, penetration testing). Proven ability to re-architect monoliths into scalable microservices with caching, queues, and real-time communication.
+              </p>
+              <p class="mb-0">
+                Deep knowledge of SOLID principles, design patterns, and secure system design with experience in mentoring teams and establishing development standards.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <div class="container">
+        <div class="row">
+
+            <h2 class="text-center mb-5 section-title fade-up">Professional Experience</h2>
+        </div>
+        
+        <!-- Senior Full Stack Engineer -->
+        <div class="row mb-5">
+          <div class="col-12">
+            <div class="glass-card experience-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <h4 class="gradient-text mb-1">Senior Full Stack Engineer</h4>
+                  <h6 class="text-info mb-1">Instasure Limited</h6>
+                  <p class="mb-2"><i class="fas fa-calendar me-2"></i>January 2023 – Present (2+ years)</p>
+                </div>
+                <span class="badge bg-success">Current</span>
+              </div>
+              
+              <h6 class="text-warning mb-3">Enterprise Insurance & Healthcare Platform (40M+ Users)</h6>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>System Architecture:</strong> Led design and implementation of scalable microservices architecture serving Robi Ltd's 40M+ subscriber base</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Healthcare Network:</strong> Architected ecosystem connecting 100+ hospitals with real-time discount processing</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Telemedicine Platform:</strong> Built comprehensive solution with consultations, appointments, and patient records</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Payment Integration:</strong> Implemented secure, PCI-compliant payment processing with AamarPay and SSLCommerz</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Performance:</strong> Achieved 40% improvement in response times through Redis caching and query optimization</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Team Leadership:</strong> Mentored junior developers and established code review processes</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="mt-3">
+                <strong>Technologies:</strong>
+                <span class="tech-badge">Laravel</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">RESTful APIs</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">VPS</span>
+                <span class="tech-badge">Docker</span>
+                <span class="tech-badge">Redis</span>
+                <span class="tech-badge">Microservices</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Stack Developer - Decodes Lab -->
+        <div class="row mb-5">
+          <div class="col-12">
+            <div class="glass-card experience-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <h4 class="gradient-text mb-1">Full Stack Developer</h4>
+                  <h6 class="text-info mb-1">Decodes Lab Limited</h6>
+                  <p class="mb-2"><i class="fas fa-calendar me-2"></i>April 2022 – December 2022 (9 months)</p>
+                </div>
+              </div>
+              
+              <h6 class="text-warning mb-3">International Client Projects</h6>
+              
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>International Projects:</strong> Developed responsive web applications for global clients using Django and React</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Code Quality:</strong> Established modern development practices, implemented automated testing, and maintained high code quality standards</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Client Management:</strong> Worked directly with international clients to gather requirements and deliver solutions</li>
+              </ul>
+              
+              <div class="mt-3">
+                <strong>Technologies:</strong>
+                <span class="tech-badge">Django</span>
+                <span class="tech-badge">DRF (API)</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">VPS</span>
+                <span class="tech-badge">Docker</span>
+                <span class="tech-badge">Redis</span>
+                <span class="tech-badge">RabbitMQ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Stack Developer - ClickDigim -->
+        <div class="row mb-5">
+          <div class="col-12">
+            <div class="glass-card experience-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <h4 class="gradient-text mb-1">Full Stack Developer</h4>
+                  <h6 class="text-info mb-1">ClickDigim</h6>
+                  <p class="mb-2"><i class="fas fa-calendar me-2"></i>October 2021 – December 2021 (3 months)</p>
+                </div>
+              </div>
+              
+              <h6 class="text-warning mb-3">Cross-Industry Web Solutions</h6>
+              
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Performance Engineering:</strong> Built high-performance web applications with focus on optimization and exceptional user experience</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Cross-Industry Solutions:</strong> Delivered solutions across e-commerce, healthcare, and fintech</li>
+              </ul>
+              
+              <div class="mt-3">
+                <strong>Technologies:</strong>
+                <span class="tech-badge">Laravel</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">Docker</span>
+                <span class="tech-badge">Redis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <div class="row">
+
+            <h2 class="text-center mb-5 section-title fade-up">Technical Expertise</h2>
+        </div>
+        <div class="row g-4">
+          
+          <!-- Languages -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card h-100 p-4 text-center">
+              <i class="fas fa-code skill-icon"></i>
+              <h5 class="gradient-text mb-3">Languages</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">PHP</li>
+                <li class="mb-2">Python</li>
+                <li class="mb-2">JavaScript (ES6+)</li>
+                <li class="mb-2">C/C++</li>
+                <li class="mb-2">C#</li>
+                <li>Java</li>
+              </ul>
+              <div class="mt-3">
+                <span class="tech-badge">SOLID Principles</span>
+                <span class="tech-badge">Design Patterns</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card h-100 p-4 text-center">
+              <i class="fas fa-paint-brush skill-icon"></i>
+              <h5 class="gradient-text mb-3">Frontend</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">HTML5</li>
+                <li class="mb-2">CSS3</li>
+                <li class="mb-2">Bootstrap</li>
+                <li class="mb-2">jQuery</li>
+                <li class="mb-2">React.js (Advanced)</li>
+                <li>Hooks, Context API</li>
+              </ul>
+              <div class="mt-3">
+                <span class="tech-badge">Redux/Thunk</span>
+                <span class="tech-badge">Performance Optimization</span>
+                <span class="tech-badge">Axios</span>
+                <span class="tech-badge">AJAX</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card h-100 p-4 text-center">
+              <i class="fas fa-server skill-icon"></i>
+              <h5 class="gradient-text mb-3">Backend</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2"><strong>Laravel (Expert):</strong></li>
+                <li class="mb-2">Advanced Eloquent ORM</li>
+                <li class="mb-2">Model Observers</li>
+                <li class="mb-2">Middleware</li>
+                <li class="mb-2">Caching (Redis/Memcached)</li>
+                <li>Events & Listeners</li>
+              </ul>
+              <div class="mt-3">
+                <span class="tech-badge">Django</span>
+                <span class="tech-badge">DRF</span>
+                <span class="tech-badge">WebSockets</span>
+                <span class="tech-badge">Queues</span>
+                <span class="tech-badge">Microservices</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DevOps & Cloud -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card h-100 p-4 text-center">
+              <i class="fas fa-cloud skill-icon"></i>
+              <h5 class="gradient-text mb-3">DevOps & Cloud</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">AWS</li>
+                <li class="mb-2">Docker</li>
+                <li class="mb-2">Kubernetes</li>
+                <li class="mb-2">Terraform</li>
+                <li class="mb-2">Ansible</li>
+                <li>CI/CD pipelines</li>
+              </ul>
+              <div class="mt-3">
+                <span class="tech-badge">Nginx</span>
+                <span class="tech-badge">VPS Management</span>
+                <span class="tech-badge">Prometheus</span>
+                <span class="tech-badge">Grafana</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card h-100 p-4 text-center">
+              <i class="fas fa-database skill-icon"></i>
+              <h5 class="gradient-text mb-3">Database</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2"><strong>MySQL (Advanced):</strong></li>
+                <li class="mb-2">Query optimization</li>
+                <li class="mb-2">Indexing</li>
+                <li class="mb-2">Sharding</li>
+                <li class="mb-2">Master-slave replication</li>
+                <li>Failover management</li>
+              </ul>
+              <div class="mt-3">
+                <span class="tech-badge">Redis</span>
+                <span class="tech-badge">Memcached</span>
+                <span class="tech-badge">Pub/Sub</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APIs -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card h-100 p-4 text-center">
+              <i class="fas fa-plug skill-icon"></i>
+              <h5 class="gradient-text mb-3">APIs</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">RESTful APIs</li>
+                <li class="mb-2">API Security</li>
+                <li class="mb-2">Rate limiting</li>
+                <li class="mb-2">Validation</li>
+                <li class="mb-2">API Resources</li>
+                <li>Microservice integrations</li>
+              </ul>
+              <div class="mt-3">
+                <span class="tech-badge">Sanctum</span>
+                <span class="tech-badge">Passport</span>
+                <span class="tech-badge">OAuth2</span>
+                <span class="tech-badge">Webhooks</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card h-100 p-4 text-center">
+              <i class="fas fa-shield-alt skill-icon"></i>
+              <h5 class="gradient-text mb-3">Security</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">Kali Linux</li>
+                <li class="mb-2">Parrot OS</li>
+                <li class="mb-2">Penetration Testing</li>
+                <li class="mb-2">Ethical Hacking</li>
+                <li class="mb-2">System Hardening</li>
+                <li>PCI Compliance</li>
+              </ul>
+              <div class="mt-3">
+                <span class="tech-badge">Security Architecture</span>
+                <span class="tech-badge">Payment Gateways</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message Queues & Monitoring -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card skill-card h-100 p-4 text-center">
+              <i class="fas fa-exchange-alt skill-icon"></i>
+              <h5 class="gradient-text mb-3">Queues & Monitoring</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2">RabbitMQ</li>
+                <li class="mb-2">Redis Pub/Sub</li>
+                <li class="mb-2">Event-Driven Architecture</li>
+                <li class="mb-2">Prometheus</li>
+                <li class="mb-2">Grafana</li>
+                <li>Loki</li>
+              </ul>
+              <div class="mt-3">
+                <span class="tech-badge">Performance Tuning</span>
+                <span class="tech-badge">System Monitoring</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <div class="row">
+
+            <h2 class="text-center mb-5 section-title fade-up">Featured Projects</h2>
+        </div>
+        
+        <!-- Featured Production Projects -->
+        <div class="row g-4 mb-5">
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h5 class="gradient-text mb-3">Enterprise Insurance Platform</h5>
+                <span class="badge bg-success mb-3">Production</span>
+                <p class="card-text mb-3">
+                  Multi-line insurance ecosystem (Life, Health, Motor, Fire & Theft) serving 40M+ users with real-time API integration with Robi Ltd.
+                </p>
+                <p class="mb-3"><strong>Impact:</strong> 99.9% uptime at scale</p>
+                <div class="mb-3">
+                  <span class="tech-badge">Laravel</span>
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">MySQL</span>
+                  <span class="tech-badge">Docker</span>
+                  <span class="tech-badge">Redis</span>
+                  <span class="tech-badge">Microservices</span>
+                </div>
+                <a href="https://instasure.xyz" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt me-1"></i>Visit Site
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h5 class="gradient-text mb-3">Healthcare Network Integration</h5>
+                <span class="badge bg-success mb-3">Production</span>
+                <p class="card-text mb-3">
+                  Connected 100+ hospitals with dynamic discount eligibility and instant claims processing. Automated invoice generation and order tracking.
+                </p>
+                <p class="mb-3"><strong>Impact:</strong> Thousands of daily healthcare transactions</p>
+                <div class="mb-3">
+                  <span class="tech-badge">Laravel</span>
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">MySQL</span>
+                  <span class="tech-badge">Real-time APIs</span>
+                </div>
+                <span class="text-muted">Internal System</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h5 class="gradient-text mb-3">Telemedicine Platform</h5>
+                <span class="badge bg-success mb-3">Production</span>
+                <p class="card-text mb-3">
+                  End-to-end consultation system with appointment booking, secure EHR, and prescription management.
+                </p>
+                <p class="mb-3"><strong>Impact:</strong> Enabled remote healthcare access across underserved regions</p>
+                <div class="mb-3">
+                  <span class="tech-badge">Laravel</span>
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">WebSockets</span>
+                  <span class="tech-badge">MySQL</span>
+                </div>
+                <span class="text-muted">Internal System</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Microservices Demo -->
+        <div class="row g-4 mb-5">
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h5 class="gradient-text mb-3">Microservices Architecture</h5>
+                <span class="badge bg-info mb-3">Production-Ready Design</span>
+                <p class="card-text mb-3">
+                  Modular, scalable backend with service isolation and message queues. Demonstrates enterprise-level architecture patterns.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-badge">Docker</span>
+                  <span class="tech-badge">Kubernetes</span>
+                  <span class="tech-badge">NGINX</span>
+                  <span class="tech-badge">RabbitMQ</span>
+                  <span class="tech-badge">Redis</span>
+                </div>
+                <a href="http://36.255.69.72" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Technical Projects -->
+        <h4 class="gradient-text mb-4">Additional Technical Projects</h4>
+        <div class="row g-4">
+          
+          <!-- Real-Time Applications -->
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h6 class="text-warning mb-3">Real-Time Chat Application</h6>
+                <p class="card-text mb-3">
+                  WebSocket-based messaging using Laravel Echo, Pusher, and Redis for instant communication.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-badge">Laravel Echo</span>
+                  <span class="tech-badge">Pusher</span>
+                  <span class="tech-badge">WebSockets</span>
+                  <span class="tech-badge">Redis</span>
+                </div>
+                <a href="https://github.com/Ashraful-Momen" target="_blank" class="project-link">
+                  <i class="fab fa-github me-1"></i>GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h6 class="text-warning mb-3">Burger Builder (React + Firebase)</h6>
+                <p class="card-text mb-3">
+                  Redux state management with real-time authentication and updates using Firebase backend.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">Redux</span>
+                  <span class="tech-badge">Firebase</span>
+                  <span class="tech-badge">Real-time Auth</span>
+                </div>
+                <a href="https://ashraful-momen.github.io/auth" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- E-Commerce Solutions -->
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h6 class="text-success mb-3">Django E-Commerce Platform</h6>
+                <p class="card-text mb-3">
+                  Full-featured store with search, cart, orders, and payment integration using Django framework.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-badge">Django</span>
+                  <span class="tech-badge">Payment Integration</span>
+                  <span class="tech-badge">Search</span>
+                  <span class="tech-badge">Cart System</span>
+                </div>
+                <a href="https://github.com/Ashraful-Momen" target="_blank" class="project-link">
+                  <i class="fab fa-github me-1"></i>GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h6 class="text-success mb-3">Laravel Blog Platform</h6>
+                <p class="card-text mb-3">
+                  Multi-role CMS with admin panel, authentication, and post management system.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-badge">Laravel</span>
+                  <span class="tech-badge">CMS</span>
+                  <span class="tech-badge">Multi-role Auth</span>
+                  <span class="tech-badge">Admin Panel</span>
+                </div>
+                <a href="https://github.com/Ashraful-Momen" target="_blank" class="project-link">
+                  <i class="fab fa-github me-1"></i>GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- React & Full-Stack Apps -->
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h6 class="text-info mb-3">Restaurant Management App</h6>
+                <p class="card-text mb-3">
+                  Ingredient & inventory tracking with Redux state management and authentication system.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">Redux</span>
+                  <span class="tech-badge">Inventory Management</span>
+                  <span class="tech-badge">Authentication</span>
+                </div>
+                <a href="https://github.com/Ashraful-Momen" target="_blank" class="project-link">
+                  <i class="fab fa-github me-1"></i>GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card project-card h-100">
+              <div class="card-body p-4">
+                <h6 class="text-info mb-3">React + Django Full-Stack</h6>
+                <p class="card-text mb-3">
+                  Burger Builder with Django REST Framework backend and React frontend integration.
+                </p>
+                <div class="mb-3">
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">Django</span>
+                  <span class="tech-badge">DRF</span>
+                  <span class="tech-badge">Full-Stack</span>
+                </div>
+                <a href="https://github.com/Ashraful-Momen" target="_blank" class="project-link">
+                  <i class="fab fa-github me-1"></i>GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section id="education">
+      <div class="container">
+        <div class="row">
+
+            <h2 class="text-center mb-5 section-title fade-up">Education & Certifications</h2>
+        </div>
+        
+        <div class="row g-4">
+          <!-- Education -->
+          <div class="col-lg-6">
+            <div class="glass-card h-100 p-4">
+              <h4 class="gradient-text mb-4"><i class="fas fa-graduation-cap me-2"></i>Education</h4>
+              <div class="mb-4">
+                <h5 class="text-info mb-2">BSc in Computer Science and Engineering</h5>
+                <p class="mb-2"><strong>CGPA:</strong> 3.88/4.00</p>
+                <p class="text-muted">Strong foundation in algorithms, data structures, and software engineering principles</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Professional Certifications -->
+          <div class="col-lg-6">
+            <div class="glass-card h-100 p-4">
+              <h4 class="gradient-text mb-4"><i class="fas fa-certificate me-2"></i>Professional Certifications</h4>
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <h6 class="text-info mb-1">Laravel with PHP</h6>
+                  <small class="text-muted">BITM – Advanced</small>
+                </li>
+                <li class="mb-3">
+                  <h6 class="text-info mb-1">Django with Python</h6>
+                  <small class="text-muted">Udemy – Mosh Hamedani</small>
+                </li>
+                <li class="mb-3">
+                  <h6 class="text-info mb-1">Full Stack React & Django</h6>
+                  <small class="text-muted">Bohubrihi</small>
+                </li>
+                <li class="mb-3">
+                  <h6 class="text-info mb-1">Ethical Hacking & Penetration Testing</h6>
+                  <small class="text-muted">Lead Training Center</small>
+                </li>
+                <li class="mb-3">
+                  <h6 class="text-info mb-1">System Design & Architecture</h6>
+                  <small class="text-muted">Innovative Skill BD</small>
+                </li>
+                <li class="mb-3">
+                  <h6 class="text-info mb-1">Docker For DevOps</h6>
+                  <small class="text-muted">IT Expert DB - Docker, Docker Swarm</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Currently Pursuing -->
+          <div class="col-lg-6">
+            <div class="glass-card h-100 p-4">
+              <h4 class="gradient-text mb-4"><i class="fas fa-book-open me-2"></i>Currently Pursuing</h4>
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <h6 class="text-warning mb-1">Advanced DevOps</h6>
+                  <small class="text-muted">Ostad</small>
+                  <span class="badge bg-warning ms-2">In Progress</span>
+                </li>
+                <li class="mb-3">
+                  <h6 class="text-warning mb-1">Advanced DSA</h6>
+                  <small class="text-muted">CPS Academy</small>
+                  <span class="badge bg-warning ms-2">In Progress</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Security & Ethical Hacking -->
+          <div class="col-lg-6">
+            <div class="glass-card h-100 p-4">
+              <h4 class="gradient-text mb-4"><i class="fas fa-shield-alt me-2"></i>Security & Ethical Hacking</h4>
+              <div class="mb-3">
+                <h6 class="text-danger mb-2">Penetration Testing Specialist</h6>
+                <small class="text-muted">Lead Training and Consultant LTD</small>
+              </div>
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Kali Linux:</strong> Advanced system penetration and vulnerability assessment</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Network Security:</strong> OSI model, TCP/UDP protocols, network vulnerability analysis</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Web Application Security:</strong> Applied ethical hacking techniques to enhance application security</li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Research:</strong> "Exploit Windows Defender Security System with Python Reverse Shell" (Publication in progress)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Leadership & Mentoring -->
+          <div class="col-12">
+            <div class="glass-card p-4">
+              <h4 class="gradient-text mb-4"><i class="fas fa-users me-2"></i>Leadership & Mentoring</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Code Review Leadership:</strong> Established and led code review processes for development teams</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Technical Mentoring:</strong> Mentored junior developers in modern web development practices</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Architecture Decisions:</strong> Led technical decision-making for system architecture and technology stack selection</li>
+                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Practices:</strong> Implemented development standards, testing practices, and documentation guidelines</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="col-12">
+            <div class="glass-card p-4">
+              <h4 class="gradient-text mb-4"><i class="fas fa-globe me-2"></i>Languages</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-3">
+                    <h6 class="text-info mb-0 me-3">English:</h6>
+                    <span class="badge bg-success">Professional Working Proficiency</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-3">
+                    <h6 class="text-info mb-0 me-3">Bengali:</h6>
+                    <span class="badge bg-success">Native Speaker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- References -->
+          <div class="col-12">
+            <div class="glass-card p-4">
+              <h4 class="gradient-text mb-4"><i class="fas fa-handshake me-2"></i>References</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <h6 class="text-info mb-1">Arif Mainuddin</h6>
+                    <p class="mb-1">Managing Director, Decodes Lab Limited</p>
+                    <small class="text-muted">info@decodeslab.com</small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <h6 class="text-info mb-1">Pritom Kaysar</h6>
+                    <p class="mb-1">Managing Director, ClickDigim</p>
+                    <small class="text-muted">info@clickdigim.com</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+
+            <h2 class="text-center mb-5 section-title fade-up">Contact Me</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="glass-card p-4">
+              <div class="d-flex flex-column gap-4">
+                <div>
+                  <i class="fas fa-envelope me-2 text-info"></i>
+                  <a
+                    href="mailto:amshuvo64@gmail.com"
+                    class="text-white text-decoration-none"
+                    >amshuvo64@gmail.com</a
+                  >
+                </div>
+                <div>
+                  <i class="fas fa-phone me-2 text-warning"></i>
+                  <a
+                    href="tel:+8801859385787"
+                    class="text-white text-decoration-none"
+                    >+880 1859385787</a
+                  >
+                </div>
+                <div>
+                  <i class="fas fa-map-marker-alt me-2 text-danger"></i>
+                  <span>Dhaka, Bangladesh</span>
+                </div>
+                <div>
+                  <i class="fas fa-briefcase me-2 text-success"></i>
+                  <span>Available for senior software engineering roles</span>
+                </div>
+                <div>
+                  <i class="fas fa-globe me-2 text-info"></i>
+                  <span>Open to remote opportunities and international positions</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="glass-card p-4">
+              <form class="contact-form">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your Name"
+                    required />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Your Email"
+                    required />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Subject"
+                    required />
+                </div>
+                <div class="mb-3">
+                  <textarea
+                    class="form-control"
+                    rows="4"
+                    placeholder="Your Message"
+                    required></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit w-100">
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+      <div class="container">
+        <div class="glass-card p-3">
+          <div class="mb-3">
+            <p class="mb-2"><strong>Available for senior software engineering roles with a focus on:</strong></p>
+            <div class="d-flex justify-content-center flex-wrap gap-2">
+              <span class="tech-badge">System Architecture</span>
+              <span class="tech-badge">Team Leadership</span>
+              <span class="tech-badge">Enterprise-scale Development</span>
+            </div>
+          </div>
+          <small>&copy; 2025 Md. Ashraful Momen. All rights reserved.</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Fade in elements on scroll
+      function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <=
+            (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+
+      function handleScroll() {
+        document.querySelectorAll(".fade-up").forEach((element) => {
+          if (isElementInViewport(element)) {
+            element.style.animationPlayState = "running";
+          }
+        });
+      }
+
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("load", handleScroll);
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Animation trigger on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe skill cards
+      document.querySelectorAll('.skill-card').forEach(card => {
+        observer.observe(card);
+      });
+    </script>
+  </body>
+</html>
